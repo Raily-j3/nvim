@@ -1,0 +1,8 @@
+{
+    "explorer.width": 30,
+    "explorer.file.reveal.auto": false,
+    "explorer.previewAction.onHover": false,
+    "explorer.icon.enableNerdfont": true,
+    "explorer.icon.source": "vim-devicons",
+    "yank.highlight.duration": 200
+}

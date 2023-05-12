@@ -1,9 +1,6 @@
-
-" ===
-" === coc.nvim
-" ===
+" ==================== coc.nvim ====================
 " CocInstall coc-pairs coc-explorer coc-json
-nmap <silent>tt :CocCommand explorer<CR>
+nmap <LEADER>e <Cmd>CocCommand explorer<CR>
 nnoremap <silent> <LEADER>y  :<C-u>CocList -A --normal yank<cr>
 set nobackup
 set nowritebackup
@@ -36,8 +33,8 @@ endif
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" nmap <silent> [g <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -146,28 +143,19 @@ nmap <leader>f  <Plug>(coc-format-selected)
 " nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
-" ===
-" === vim-auto-save
-" ===
+" ==================== vim-auto-save ====================
 let g:auto_save = 1
 let g:auto_save_silent = 1  " do not display the auto-save notification
 let g:auto_save_events = ["InsertLeave", "CursorHold", "CompleteDone"]
 
 
-" ===
-" === lightline
-" ===
-" enable tabline
-set t_Co=256      "在windows中用xshell连接打开vim可以显示色彩
+" ==================== lightline ====================
+" set t_Co=256      "在windows中用xshell连接打开vim可以显示色彩
 set laststatus=2  "永远显示状态栏
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ }
+let g:lightline = { 'colorscheme': 'darculaOriginal' }
 
 
-" ===
-" === Nerdcommenter
-" ===
+" ==================== Nerdcommenter ====================
 " map omg <Plug>NERDCommenterToggle
 map <LEADER>/ <plug>NERDCommenterToggle
 " Create default mappings
@@ -190,49 +178,55 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
 
-" ===
-" === easymotion
-" ===
+" ==================== easymotion ====================
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 " Jump to anywhere you want with minimal keystrokes, with just one key
 " binding.
 " `s{char}{label}`
-nmap s <Plug>(easymotion-overwin-f)
+" nmap s <Plug>(easymotion-overwin-f)
 " or
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
 nmap s <Plug>(easymotion-overwin-f2)
-
+"
 " Turn on case-insensitive feature
 let g:EasyMotion_smartcase = 1
 
-" JK motions: Line motions
-map J <Plug>(easymotion-j)
-map K <Plug>(easymotion-k)
+
+" ==================== indentline ====================
+let g:indentLine_char = '▏'
 
 
-""" gruvbox
-set termguicolors
-set bg=dark
-let g:gruvbox_contrast_dark = 'medium'
-colorscheme gruvbox
+" ==================== easymotion ====================
+nnoremap <silent> <leader>gg :LazyGit<CR>
 
 
-" ===============================Plugins===============================
+" ==================== nvim-hlslens ====================
+" noremap <silent> = <Cmd>execute('normal! ' . v:count1 . 'n')<CR>
+"             \<Cmd>lua require('hlslens').start()<CR>
+" noremap <silent> - <Cmd>execute('normal! ' . v:count1 . 'N')<CR>
+"             \<Cmd>lua require('hlslens').start()<CR>
+" noremap * *<Cmd>lua require('hlslens').start()<CR>
+" noremap # #<Cmd>lua require('hlslens').start()<CR>
+
+
+" ==================== PLUGINS ====================
 call plug#begin()
-    Plug 'morhetz/gruvbox'
-    Plug 'itchyny/lightline.vim'
+    Plug 'doums/darcula'                             " Theme
+    Plug 'itchyny/lightline.vim'                     " Statusbar theme
+    Plug 'easymotion/vim-easymotion'                 " Cursor move
+    Plug '907th/vim-auto-save'                       " Auto save
+    Plug 'preservim/nerdcommenter'                   " Comment
+    Plug 'yggdroot/indentline'                       " Indentline
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Conquer of Completion
+    Plug 'ryanoasis/vim-devicons'                    " Nerdfont
+    Plug 'kdheepak/lazygit.nvim'                     " Lazygit
+    Plug 'kevinhwang91/nvim-hlslens'                 " Highlight search lens
+    Plug 'petertriho/nvim-scrollbar'                 " Scrollbar
+    Plug 'lewis6991/gitsigns.nvim'
     Plug 'sheerun/vim-polyglot'
-    Plug 'easymotion/vim-easymotion'
-    Plug '907th/vim-auto-save'                      " Auto save
-    Plug 'preservim/nerdcommenter'                  " comment
-    Plug 'yggdroot/indentline'
-    Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " Plug 'joshdick/onedark.vimk'                   " themes
-    " Plug 'jiangmiao/auto-pairs'                     " Auto pairs for '(' '[' '{'
-    " Plug 'ryanoasis/vim-devicons'                  " nerdfont
+
+    " Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 call plug#end()
 

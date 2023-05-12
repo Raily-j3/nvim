@@ -1,12 +1,15 @@
 let g:mapleader = "\<Space>" " set leader key
-nnoremap <silent><LEADER>v :tabe $HOME/AppData/Local/nvim/init.vim<CR>
+nnoremap <silent><LEADER>v :tabe $HOME/.config/nvim/init.vim<CR>
 syntax on
 filetype indent on
 
+""" Theme
+colorscheme darcula
+set termguicolors
+
 """ Cursor style
-" set gcr=a:blinkon0
-set guicursor=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
 set cursorline " Enable highlighting of the current line
+highlight CursorLine guifg=NONE guibg=#1b1b1b
 
 """ Setting
 set nu
@@ -16,12 +19,11 @@ set mouse=a
 set clipboard=unnamedplus " Copy paste between vim and everything else
 set scrolloff=5
 set ignorecase " 大小写
-set t_Co=256                            " Support 256 colors
+" set t_Co=256                            " Support 256 colors
 
 """ Hightlight
 set hlsearch
 set incsearch  " 搜索时高亮
-highlight CursorLine cterm=NONE ctermbg=239
 
 """ Indent
 set smartcase
@@ -36,3 +38,7 @@ set expandtab                           " Converts tabs to spaces
 """ 折叠
 set foldmethod=syntax
 set nofoldenable
+
+lua <<EOF
+EOF
+
