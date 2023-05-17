@@ -10,6 +10,7 @@ set termguicolors
 """ Cursor style
 set cursorline " Enable highlighting of the current line
 highlight CursorLine guifg=NONE guibg=#1b1b1b
+set fillchars+=fold:\  foldtext='\{...'
 
 """ Setting
 set nu

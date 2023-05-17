@@ -152,7 +152,19 @@ let g:auto_save_events = ["InsertLeave", "CursorHold", "CompleteDone"]
 " ==================== lightline ====================
 " set t_Co=256      "在windows中用xshell连接打开vim可以显示色彩
 set laststatus=2  "永远显示状态栏
-let g:lightline = { 'colorscheme': 'darculaOriginal' }
+set scroll=8
+      " \ 'colorscheme': 'darculaOriginal',
+      "
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'component': {
+          \ 'filename': '%F'
+          \ }
+  \ }
+
+let g:unite_force_overwrite_statusline = 0
+let g:vimfiler_force_overwrite_statusline = 0
+let g:vimshell_force_overwrite_statusline = 0
 
 
 " ==================== Nerdcommenter ====================
