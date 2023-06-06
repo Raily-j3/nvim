@@ -1,5 +1,6 @@
 let g:mapleader = "\<Space>" " set leader key
 nnoremap <silent><LEADER>v :tabe $HOME/.config/nvim/init.vim<CR>
+nnoremap <silent><LEADER>r :w<CR>:source $HOME/.config/nvim/init.vim<CR>
 syntax on
 filetype indent on
 
@@ -42,4 +43,3 @@ set nofoldenable
 
 lua <<EOF
 EOF
-

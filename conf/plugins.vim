@@ -1,23 +1,39 @@
 " ==================== coc.nvim ====================
 " CocInstall coc-pairs coc-explorer coc-json
+let g:coc_global_extensions = [
+    \ 'coc-json',
+    \ 'coc-explorer',
+    \ 'coc-clangd',
+    \ 'coc-pairs',
+    \ 'coc-vimlsp'
+    \ ]
 nmap <LEADER>e <Cmd>CocCommand explorer<CR>
 nnoremap <silent> <LEADER>y  :<C-u>CocList -A --normal yank<cr>
 set nobackup
 set nowritebackup
 " " Always show the signcolumn, otherwise it would shift the text each time
 " " diagnostics appear/become resolved.
-" set signcolumn=yes
+set signcolumn=yes
 "
-inoremap <silent><expr> <TAB>
+" inoremap <silent><expr> <TAB>
+inoremap <silent><expr> <C-j>
       \ coc#pum#visible() ? coc#pum#next(1) :
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <expr><C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<CR>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<S-TAB>'
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -43,7 +59,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-" nnoremap <silent> K :call ShowDocumentation()<CR>
+nnoremap <silent> gh :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
@@ -181,7 +197,8 @@ let g:NERDDefaultAlign = 'left'
 " Set a language to use its alternate delimiters by default
 let g:NERDAltDelims_java = 1
 " Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+let g:NERDCustomDelimiters = { 'c': { 'left': '//',  'leftAlt': '/**','rightAlt': '*/' } }
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
@@ -208,10 +225,30 @@ let g:EasyMotion_smartcase = 1
 
 " ==================== indentline ====================
 let g:indentLine_char = '▏'
+let g:indentLine_fileTypeExclude = ['coc-explorer']
 
 
-" ==================== easymotion ====================
-nnoremap <silent> <leader>gg :LazyGit<CR>
+" ==================== lazygit ====================
+noremap <c-g> :LazyGit<CR>
+let g:lazygit_floating_window_winblend = 0 " transparency of floating window
+let g:lazygit_floating_window_scaling_factor = 1.0 " scaling factor for floating window
+let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
+let g:lazygit_use_neovim_remote = 1 " for neovim-remote support
+
+
+" ==================== FZF ====================
+let g:fzf_preview_window = ['right,50%', 'ctrl-/']
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+nnoremap <silent> <C-f> :Rg <CR>
+nnoremap <silent> <C-t> :Files <CR>
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+let g:fzf_layout = { 'window': { 'width': 1, 'height': 1 } }
 
 
 " ==================== nvim-hlslens ====================
@@ -221,6 +258,14 @@ nnoremap <silent> <leader>gg :LazyGit<CR>
 "             \<Cmd>lua require('hlslens').start()<CR>
 " noremap * *<Cmd>lua require('hlslens').start()<CR>
 " noremap # #<Cmd>lua require('hlslens').start()<CR>
+
+
+" ==================== joshuto ====================
+" noremap <silent><C-p> :Joshuto<CR>
+
+
+" ==================== maximizer ====================
+noremap <silent><BS> :MaximizerToggle<CR>
 
 
 " ==================== PLUGINS ====================
@@ -234,10 +279,17 @@ call plug#begin()
     Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Conquer of Completion
     Plug 'ryanoasis/vim-devicons'                    " Nerdfont
     Plug 'kdheepak/lazygit.nvim'                     " Lazygit
-    Plug 'kevinhwang91/nvim-hlslens'                 " Highlight search lens
+    " Plug 'kevinhwang91/nvim-hlslens'                 " Highlight search lens
     Plug 'petertriho/nvim-scrollbar'                 " Scrollbar
     Plug 'lewis6991/gitsigns.nvim'
     Plug 'sheerun/vim-polyglot'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+    Plug 'yuki-yano/fzf-preview.vim'
+    Plug 'theniceboy/joshuto.nvim'
+    Plug 'szw/vim-maximizer'
+    Plug 'vim-scripts/argtextobj.vim'
+    Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
     " Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 call plug#end()
