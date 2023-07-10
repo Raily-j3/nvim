@@ -229,10 +229,10 @@ let g:indentLine_fileTypeExclude = ['coc-explorer']
 
 
 " ==================== lazygit ====================
-noremap <c-g> :LazyGit<CR>
+noremap <silent><c-g> :LazyGit<CR>
 let g:lazygit_floating_window_winblend = 0 " transparency of floating window
 let g:lazygit_floating_window_scaling_factor = 1.0 " scaling factor for floating window
-let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
+let g:lazygit_floating_window_border_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
 let g:lazygit_use_neovim_remote = 1 " for neovim-remote support
 
 
@@ -268,6 +268,15 @@ let g:fzf_layout = { 'window': { 'width': 1, 'height': 1 } }
 noremap <silent><BS> :MaximizerToggle<CR>
 
 
+" ==================== fswitch ====================
+noremap <silent><C-p> :FSHere<CR>
+
+
+" ==================== git-blame ====================
+let g:gitblame_enabled = 0
+noremap <silent><C-b> :GitBlameToggle<CR>
+
+
 " ==================== PLUGINS ====================
 call plug#begin()
     Plug 'doums/darcula'                             " Theme
@@ -279,7 +288,7 @@ call plug#begin()
     Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Conquer of Completion
     Plug 'ryanoasis/vim-devicons'                    " Nerdfont
     Plug 'kdheepak/lazygit.nvim'                     " Lazygit
-    " Plug 'kevinhwang91/nvim-hlslens'                 " Highlight search lens
+    Plug 'kevinhwang91/nvim-hlslens'                 " Highlight search lens
     Plug 'petertriho/nvim-scrollbar'                 " Scrollbar
     Plug 'lewis6991/gitsigns.nvim'
     Plug 'sheerun/vim-polyglot'
@@ -290,6 +299,9 @@ call plug#begin()
     Plug 'szw/vim-maximizer'
     Plug 'vim-scripts/argtextobj.vim'
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+    Plug 'derekwyatt/vim-fswitch'
+    Plug 'f-person/git-blame.nvim'
+    Plug 'sindrets/diffview.nvim'
 
     " Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 call plug#end()

@@ -3,8 +3,8 @@ nnoremap m mJ
 nnoremap ` `J
 noremap H _
 noremap L g_
-noremap J 3<C-e>
-noremap K 3<C-y>
+noremap J 5<C-e>
+noremap K 5<C-y>
 noremap [[ %
 noremap ]] ]}
 nnoremap { [[kzt

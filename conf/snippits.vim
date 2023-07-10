@@ -20,3 +20,7 @@ autocmd Filetype markdown inoremap <buffer> ,2 ##<Space><Enter><Enter><++><Esc>k
 autocmd Filetype markdown inoremap <buffer> ,3 ###<Space><Enter><Enter><++><Esc>kkA
 autocmd Filetype markdown inoremap <buffer> ,4 ####<Space><Enter><Enter><++><Esc>kkA
 autocmd Filetype markdown inoremap <buffer> ,5 #####<Space><Enter><Enter><++><Esc>kkA
+
+" c
+autocmd Filetype c inoremap <buffer> ,w widget_t *
+autocmd Filetype c inoremap <buffer> ,W widget_t *win = WIDGET(ctx);
