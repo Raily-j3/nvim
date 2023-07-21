@@ -40,8 +40,11 @@ map("n", "<leader>l", "<C-W>l", { desc = "" })
 map("n", "H", "_", { desc = "" })
 map("n", "L", "g_", { desc = "" })
 map("n", "J", "5<C-e>", { desc = "" })
+map("n", "K", "5<C-y>", { desc = "" })
 map("v", "H", "_", { desc = "" })
 map("v", "L", "g_", { desc = "" })
+map("v", "J", "5<C-e>", { desc = "" })
+map("v", "K", "5<C-y>", { desc = "" })
 
 -- buffers
 if Util.has("bufferline.nvim") then
