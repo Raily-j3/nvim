@@ -31,6 +31,8 @@ map("v", "<C-A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<C-A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 map("n", "<leader>d", "<C-W>c", { desc = "Delete window", remap = true })
+map("n", "<leader>w", function() require("mini.bufremove").delete(0, false) end, { desc = "Delete Buffer", nowait = true })
+map("n", "<leader>W", function() require("mini.bufremove").delete(0, true) end, { desc = "Delete Buffer(force)", nowait = true })
 
 -- move
 map("n", "<leader>j", "<C-W>j", { desc = "" })
