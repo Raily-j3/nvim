@@ -52,4 +52,4 @@ else
   map("n", "<C-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 end
 
-map("n", "<C-k>", vim.lsp.buf.hover, { desc = "" })
+map("n", "gh", vim.lsp.buf.hover, { desc = "" })
