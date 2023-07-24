@@ -25,7 +25,7 @@ return {
       desc = "Grep",
     },
     {
-    "<leader>m",
+    "<leader>n",
     function()
         require("telescope.builtin").lsp_document_symbols({
             symbols = {
