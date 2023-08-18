@@ -17,6 +17,7 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 
+map("n", "zz", "zt", {})
 map("n", "<A-j>", "", {})
 map("n", "<A-k>", "", {})
 map("i", "<A-k>", "", {})
