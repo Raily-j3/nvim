@@ -9,7 +9,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins", dev = true },
+    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { import = "lazyvim.plugins.extras.lang.clangd" },
     -- import any extras modules here
     -- { import = "lazyvim.plugins.extras.lang.typescript" },
@@ -44,8 +44,4 @@ require("lazy").setup({
       },
     },
   },
-  dev = {
-    path = "~/.local/share",
-    patterns = { "LazyVim" },
-  }
 })
