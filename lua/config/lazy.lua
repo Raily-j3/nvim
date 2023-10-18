@@ -10,7 +10,6 @@ require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins", dev = true },
-    { import = "lazyvim.plugins.extras.lang.clangd" },
     -- import any extras modules here
     -- { import = "lazyvim.plugins.extras.lang.typescript" },
     -- { import = "lazyvim.plugins.extras.lang.json" },
@@ -44,8 +43,4 @@ require("lazy").setup({
       },
     },
   },
-  dev = {
-    path = "~/.local/share",
-    patterns = { "LazyVim" },
-  }
 })
