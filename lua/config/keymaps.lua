@@ -36,6 +36,8 @@ map("n", "<leader>w", function() require("mini.bufremove").delete(0, false) end,
 map("n", "<leader>W", function() require("mini.bufremove").delete(0, true) end, { desc = "Delete Buffer(force)", nowait = true })
 
 -- move
+map("n", "<leader>[", "[{", { desc = "" })
+map("n", "<leader>]", "]}", { desc = "" })
 map("n", "<leader>j", "<C-W>j", { desc = "" })
 map("n", "<leader>k", "<C-W>k", { desc = "" })
 map("n", "<leader>h", "<C-W>h", { desc = "" })

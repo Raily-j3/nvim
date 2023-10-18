@@ -9,8 +9,8 @@ return {
       if require("neo-tree.utils").is_expandable(node) then
         state.commands["toggle_node"](state)
       else
-        state.commands["open"](state)
-        vim.cmd("Neotree reveal")
+        state.commands["open_vsplit"](state)
+        -- vim.cmd("Neotree reveal")
       end
     end
     mappings["h"] = function(state)
